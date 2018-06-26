@@ -1,13 +1,21 @@
 # BootEA
-Bootstrapping Entity Alignment with Knowledge Graph Embedding
+Source code and datasets for IJCAI-2018 paper "Bootstrapping Entity Alignment with Knowledge Graph Embedding".
+
+## Dataset
+DBP100K can be found [here]().
 
 ## Code
+Folder "code" contains all codes of BootEA, in which:
+* "AlignE.py" is the implementation of AlignE;
+* "BootEA.py" is the implementation of BootEA;
+* "param.py" is the config file.
 
 ### Dependencies
 * Python 3
 * Tensorflow 1.x 
 * Scipy
 * Numpy
+* Graph-tool
+* igraph
 
-### Parameter settings
-* mu_1: a bigger mu_1 (such as 1.0) would lead to a better results measured by Hits@k. However, the bigger value would hinder the performance measured by MR (mean rank). Given the above, a small mu_1 (such as 0.2) would be a good choice.
+

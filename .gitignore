@@ -1,3 +1,8 @@
+.idea/
+DBP15K/
+DBP100K/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
