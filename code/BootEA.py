@@ -55,6 +55,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 2:
         folder = sys.argv[1]
     else:
-        folder = '../DBP15K/zh_en/mtranse/0_3/'
+        # folder = '../DBP15K/zh_en/mtranse/0_3/'
+        folder = '../dataset/DWY100K/dbp_wd/mapping/0_3/'
     train(folder)
     print("total time = {:.3f} s".format(time.time() - t))
