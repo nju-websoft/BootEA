@@ -15,23 +15,10 @@ from test_funcs import eval_alignment, eval_alignment_mul, eval_alignment_multi_
 g = 1000000000
 
 
-def xavier_init(mat_x, mat_y, name):
-    print("xavier_init")
-    return tf.get_variable(name, shape=[mat_x, mat_y], initializer=tf.contrib.layers.xavier_initializer(uniform=False))
-
-
 def embed_init(mat_x, mat_y, name, is_l2=False):
     print("embed_init")
     embeddings = tf.Variable(tf.truncated_normal([mat_x, mat_y], stddev=1.0 / math.sqrt(P.embed_size)))
     return tf.nn.l2_normalize(embeddings, 1) if is_l2 else embeddings
-
-
-def random_unit_embeddings(dim1, dim2):
-    print("random_unit_embeddings")
-    vectors = list()
-    for i in range(dim1):
-        vectors.append([random.gauss(0, 1) for j in range(dim2)])
-    return tf.Variable(preprocessing.normalize(np.matrix(vectors)), dtype=tf.float32)
 
 
 def mul(tensor1, tensor2, session, num, sigmoid):
@@ -79,28 +66,13 @@ class KGE_Model:
         with tf.variable_scope('relation' + 'embedding'):
             self.ent_embeddings = embed_init(self.ent_num, self.embed_size, "ent_embeds")
             self.rel_embeddings = embed_init(self.rel_num, self.embed_size, "rel_embeds")
-            # self.ent_embeddings = xavier_init(self.ent_num, self.embed_size, "ent_embeds")
-            # self.rel_embeddings = xavier_init(self.rel_num, self.embed_size, "rel_embeds")
-            # self.ent_embeddings = random_unit_embeddings(self.ent_num, self.embed_size)
-            # self.rel_embeddings = random_unit_embeddings(self.rel_num, self.embed_size)
             self.ent_embeddings = tf.nn.l2_normalize(self.ent_embeddings, 1)
             self.rel_embeddings = tf.nn.l2_normalize(self.rel_embeddings, 1)
 
     def _generate_graph(self):
         def generate_loss(phs, prs, pts, nhs, nrs, nts):
-            # log-likelihood
-            # pos_loss = - tf.reduce_sum(tf.log(tf.sigmoid(-tf.reduce_sum(tf.pow(phs + prs - pts, 2), 1))))
-            # neg_loss = - tf.reduce_sum(tf.log(tf.sigmoid(tf.reduce_sum(tf.pow(nhs + nrs - nts, 2), 1))))
-
-            # logistic loss
-            # pos_loss = tf.reduce_sum(tf.log(1 + tf.exp(tf.reduce_sum(tf.pow(phs + prs - pts, 2), 1))))
-            # neg_loss = tf.reduce_sum(tf.log(1 + tf.exp(-tf.reduce_sum(tf.pow(nhs + nrs - nts, 2), 1))))
-
-            # limit loss
             pos_score = tf.reduce_sum(tf.pow(phs + prs - pts, 2), 1)
             neg_score = tf.reduce_sum(tf.pow(nhs + nrs - nts, 2), 1)
-            # pos_loss = tf.reduce_sum(tf.nn.relu(pos_score - tf.constant(PARAM_ST.pos_margin)))
-            # neg_loss = tf.reduce_sum(tf.nn.relu(tf.constant(PARAM_ST.neg_margin) - neg_score))
             pos_loss = tf.reduce_sum(tf.maximum(pos_score - tf.constant(P.lambda_1), 0))
             neg_loss = P.mu_1 * tf.reduce_sum(tf.maximum(tf.constant(P.lambda_2) - neg_score, 0))
 
@@ -163,21 +135,6 @@ class KGE_Model:
         refs2_embed = tf.nn.embedding_lookup(self.ent_embeddings, self.ref_ent2)
         refs1_embed = tf.nn.l2_normalize(refs1_embed, 1)
         refs2_embed = tf.nn.l2_normalize(refs2_embed, 1)
-
-        # sim_mat = mul(refs1_embed, refs2_embed, self.session, len(self.ref_ent1), False)
-        # eval_alignment_mul(sim_mat, P.ent_top_k, mess="ent alignment")
-        # if selected_pairs is not None and len(selected_pairs) > 0:
-        #     for i, j in selected_pairs:
-        #         sim_mat[i, j] = sim_mat[i, j] + 1.0
-        #     eval_alignment_mul(sim_mat, P.ent_top_k, mess="ent alignment with bootstrapping")
-        # t2 = time.time()
-        # m1 = psutil.virtual_memory().used
-        # del sim_mat
-        # gc.collect()
-        # print("gc costs {:.3f} s, mem change {:.6f} G".format(time.time() - t2,
-        #                                                       (psutil.virtual_memory().used - m1) / g))
-        # print("testing ent alignment costs: {:.3f} s\n".format(time.time() - t1))
-
         refs1_embed = refs1_embed.eval(session=self.session)
         refs2_embed = refs2_embed.eval(session=self.session)
         prec_set = eval_alignment_multi_embed(refs1_embed, refs2_embed, P.ent_top_k, selected_pairs, mess="ent alignment")
