@@ -17,9 +17,7 @@ Folder "code" contains all codes of BootEA, in which:
 * Tensorflow 1.x 
 * Scipy
 * Numpy
-* Graph-tool
-* igraph
-
+* Graph-tool or igraph or NetworkX
 
 > If you have any difficulty or question in running code and reproducing expriment results, please email to zqsun.nju@gmail.com and whu@nju.edu.cn.
 
