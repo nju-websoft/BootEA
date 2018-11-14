@@ -4,7 +4,7 @@ import gc
 
 import numpy as np
 import igraph as ig
-from graph_tool.all import *
+import networkx as nx
 from model import P
 
 
@@ -94,6 +94,7 @@ def mwgm(pairs, sim_mat, func):
 
 
 def mwgm_graph_tool(pairs, sim_mat):
+    from graph_tool.all import Graph, max_cardinality_matching
     if not isinstance(pairs, list):
         pairs = list(pairs)
     g = Graph()
@@ -147,6 +148,33 @@ def mwgm_igraph(pairs, sim_mat):
     for index in selected_index:
         matched_pairs.add(pairs[index])
     return matched_pairs
+
+
+def mwgm_networkx(pairs, sim_mat):
+    def str_splice(prefix, index):
+        return prefix + "_" + str(index)
+
+    def remove_prefix(string):
+        params = string.split('_')
+        assert len(params) == 2
+        return int(params[-1])
+
+    prefix1 = 's'
+    prefix2 = 't'
+    graph = nx.Graph()
+    for pair in pairs:
+        graph.add_edge(str_splice(prefix1, pair[0]), str_splice(prefix2, pair[1]), weight=sim_mat[pair[0], pair[1]])
+    edges = nx.max_weight_matching(graph, maxcardinality=False)
+    matching_pairs = set()
+    for v1, v2 in edges:
+        if v1.startswith(prefix1):
+            s = remove_prefix(v1)
+            t = remove_prefix(v2)
+        else:
+            t = remove_prefix(v1)
+            s = remove_prefix(v2)
+        matching_pairs.add((s, t))
+    return matching_pairs
 
 
 def find_potential_alignment(sim_mat, sim_th, k, total_n):

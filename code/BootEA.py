@@ -15,7 +15,8 @@ def train(folder):
     labeled_align = set()
     ents1, ents2 = None, None
 
-    related_mat = generate_related_mat(folder, triples1, triples2, model.ref_ent1, model.ref_ent2)
+    # related_mat = generate_related_mat(folder, triples1, triples2, model.ref_ent1, model.ref_ent2)
+    related_mat = None
 
     if P.epsilon > 0:
         trunc_ent_num = int(len(ori_triples1.ent_list) * (1 - P.epsilon))
@@ -55,7 +56,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 2:
         folder = sys.argv[1]
     else:
-        # folder = '../DBP15K/zh_en/mtranse/0_3/'
-        folder = '../dataset/DWY100K/dbp_wd/mapping/0_3/'
+        folder = '../dataset/DBP15K/zh_en/mtranse/0_3/'
+        # folder = '../dataset/DWY100K/dbp_wd/mapping/0_3/'
     train(folder)
     print("total time = {:.3f} s".format(time.time() - t))
