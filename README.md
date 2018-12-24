@@ -1,5 +1,5 @@
 # BootEA
-Source code and datasets for IJCAI-2018 paper "Bootstrapping Entity Alignment with Knowledge Graph Embedding".
+Source code and datasets for IJCAI-2018 paper "_[Bootstrapping Entity Alignment with Knowledge Graph Embedding](https://www.ijcai.org/proceedings/2018/0611.pdf)_".
 
 ## Dataset
 Folder "dataset" contains the id files of DWY100K. 
@@ -44,7 +44,7 @@ Folder "code" contains all codes of BootEA, in which:
 
 ## Citation
 If you use this model or code, please cite it as follows:      
-_Zequn Sun, Wei Hu, Qingheng Zhang, Yuzhong Qu. Bootstrapping Entity Alignment with Knowledge Graph Embedding. In: IJCAI 2018._
+_Zequn Sun, Wei Hu, Qingheng Zhang, Yuzhong Qu. [Bootstrapping Entity Alignment with Knowledge Graph Embedding](https://www.ijcai.org/proceedings/2018/0611.pdf). In: IJCAI 2018._
 
 
 
