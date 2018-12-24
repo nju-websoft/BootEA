@@ -4,7 +4,7 @@ Source code and datasets for IJCAI-2018 paper "Bootstrapping Entity Alignment wi
 ## Dataset
 Folder "dataset" contains the id files of DWY100K. 
 
-The subfolder "mapping/0_3" contains the id files used in BootEA and MTransE while the subfolder "sharing/0_3" is for JAPE and IPTransE. They use 30% reference entity alignment as seeds. Id files in "sharing/0_3" is generated following the idea of parameter sharing that lets the two aligned enitites in seed alignment share the same id, while "mapping/0_3" does not.
+The subfolder "mapping/0_3" contains the id files used in BootEA and MTransE while the subfolder "sharing/0_3" is for JAPE and IPTransE. The two datasets use 30% reference entity alignment as seeds. Id files in "sharing/0_3" are generated following the idea of parameter sharing that lets the two aligned enitites in seed alignment share the same id, while "mapping/0_3" does not.
 
 The subfolder "mapping/0_3" inculdes the following files:
 * ent_ids_1: entity ids in the source KG;
