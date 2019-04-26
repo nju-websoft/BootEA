@@ -4,7 +4,7 @@ Source code and datasets for IJCAI-2018 paper "_[Bootstrapping Entity Alignment 
 ## Dataset
 We use two datasets, namely DBP15K and DWY100K. DBP15K can be found [here](https://github.com/nju-websoft/JAPE) while DWY100K is as follows.
 ### Id files of DWY100K
-Folder "dataset" contains the id files of DWY100K. 
+Folder "dataset/DWY100K/" contains the id files of DWY100K. 
 
 The subfolder "mapping/0_3" contains the id files used in BootEA and MTransE while the subfolder "sharing/0_3" is for JAPE and IPTransE. The two datasets use 30% reference entity alignment as seeds. Id files in "sharing/0_3" are generated following the idea of parameter sharing that lets the two aligned enitites in seed alignment share the same id, while "mapping/0_3" does not.
 
