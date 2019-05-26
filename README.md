@@ -61,5 +61,7 @@ If you fail to install Graph-tool, we suggest you to set "self.heuristic = False
 If you use this model or code, please cite it as follows:      
 _Zequn Sun, Wei Hu, Qingheng Zhang, Yuzhong Qu. [Bootstrapping Entity Alignment with Knowledge Graph Embedding](https://www.ijcai.org/proceedings/2018/0611.pdf). In: IJCAI 2018._
 
-
-
+## Links
+The following links point to some recent work that uses our datasets:
+ 
+Qingheng Zhang, et al. [Multi-view Knowledge Graph Embedding for Entity Alignment.]() In: IJCAI. 2019.  
