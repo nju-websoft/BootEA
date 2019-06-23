@@ -55,7 +55,7 @@ Folder "code" contains all codes of BootEA, in which:
 
 If you fail to install Graph-tool, we suggest you to set "self.heuristic = False" in param.py, which allows BootEA to run using igraph rather than Graph-tool. If you have trouble installing igraph, you can use NetworkX by modifying the code of line 186-189 in train_bp.py and replacing "mwgm_graph_tool" and "mwgm_igraph" with "mwgm_networkx". Note that, igraph and NetworkX are much slower than Graph-tool!
 
-> If you have any difficulty or question in running code and reproducing expriment results, please email to zqsun.nju@gmail.com and whu@nju.edu.cn.
+> If you have any difficulty or question in running code and reproducing experiment results, please email to zqsun.nju@gmail.com and whu@nju.edu.cn.
 
 ## Citation
 If you use this model or code, please cite it as follows:      
