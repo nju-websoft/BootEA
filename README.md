@@ -64,4 +64,6 @@ _Zequn Sun, Wei Hu, Qingheng Zhang, Yuzhong Qu. [Bootstrapping Entity Alignment 
 ## Links
 The following links point to some recent work that uses our datasets:
  
-Qingheng Zhang, et al. [Multi-view Knowledge Graph Embedding for Entity Alignment.]() In: IJCAI. 2019.  
+* Yixin Cao, et al. [Multi-Channel Graph Neural Network for Entity Alignment.](https://www.aclweb.org/anthology/P19-1140) In: ACL 2019.  
+* Qiannan Zhu, et al. [Neighborhood-Aware Attentional Representation for Multilingual Knowledge Graphs.](https://www.ijcai.org/proceedings/2019/0269.pdf) In: IJCAI 2019.  
+* Qingheng Zhang, et al. [Multi-view Knowledge Graph Embedding for Entity Alignment.](https://www.ijcai.org/proceedings/2019/0754.pdf) In: IJCAI. 2019.  
