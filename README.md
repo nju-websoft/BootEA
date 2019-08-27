@@ -59,7 +59,15 @@ If you fail to install Graph-tool, we suggest you to set "self.heuristic = False
 
 ## Citation
 If you use this model or code, please cite it as follows:      
-_Zequn Sun, Wei Hu, Qingheng Zhang, Yuzhong Qu. [Bootstrapping Entity Alignment with Knowledge Graph Embedding](https://www.ijcai.org/proceedings/2018/0611.pdf). In: IJCAI 2018._
+```
+@inproceedings{BootEA,
+  author    = {Zequn Sun and Wei Hu and Qingheng Zhang and Yuzhong Qu},
+  title     = {Bootstrapping Entity Alignment with Knowledge Graph Embedding},
+  booktitle = {IJCAI},
+  pages     = {4396--4402},
+  year      = {2018}
+}
+```
 
 ## Links
 The following links point to some recent work that uses our datasets:
@@ -67,3 +75,4 @@ The following links point to some recent work that uses our datasets:
 * Yixin Cao, et al. [Multi-Channel Graph Neural Network for Entity Alignment.](https://www.aclweb.org/anthology/P19-1140) In: ACL 2019.  
 * Qiannan Zhu, et al. [Neighborhood-Aware Attentional Representation for Multilingual Knowledge Graphs.](https://www.ijcai.org/proceedings/2019/0269.pdf) In: IJCAI 2019.  
 * Qingheng Zhang, et al. [Multi-view Knowledge Graph Embedding for Entity Alignment.](https://www.ijcai.org/proceedings/2019/0754.pdf) In: IJCAI. 2019.  
+* Tingting Jiang, et al. [Two-Stage Entity Alignment: Combining Hybrid Knowledge Graph Embedding with Similarity-Based Relation Alignment.](https://link.springer.com/chapter/10.1007/978-3-030-29908-8_13) In: PRICAI 2019.  
